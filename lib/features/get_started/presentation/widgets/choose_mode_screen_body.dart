@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotify/features/get_started/widgets/button.dart';
-import 'package:spotify/features/get_started/widgets/choose_mode_buttons.dart';
-import 'package:spotify/features/get_started/widgets/logo.dart';
+import 'package:spotify/features/auth/presentation/pages/signup_or_signin.dart';
+import 'package:spotify/core/widgets/basic_app_button.dart';
+import 'package:spotify/features/get_started/presentation/widgets/choose_mode_buttons.dart';
+import 'package:spotify/features/get_started/presentation/widgets/logo.dart';
 
 class ChooseModeScreenBody extends StatelessWidget {
   const ChooseModeScreenBody({super.key});
@@ -34,7 +35,20 @@ class ChooseModeScreenBody extends StatelessWidget {
           SizedBox(height: 23.h),
           ChooseModeButtons(),
           SizedBox(height: 80.h),
-          BasicAppButton(onPressed: () {}, title: 'Continue'),
+          BasicAppButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    // Replace with the actual next screen
+                    return SignupOrSignin();
+                  },
+                ),
+              );
+            },
+            title: 'Continue',
+          ),
           SizedBox(height: 30.h),
         ],
       ),

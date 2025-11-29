@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotify/features/get_started/choose_mode_screen.dart';
-import 'package:spotify/features/get_started/widgets/button.dart';
-import 'package:spotify/features/get_started/widgets/logo.dart';
-import 'package:spotify/features/get_started/widgets/title_and_subtitle.dart';
+import 'package:spotify/features/get_started/presentation/choose_mode_screen.dart';
+import 'package:spotify/core/widgets/basic_app_button.dart';
+import 'package:spotify/features/get_started/presentation/widgets/logo.dart';
+import 'package:spotify/features/get_started/presentation/widgets/title_and_subtitle.dart';
 
 class GetStartedScreenBody extends StatelessWidget {
   const GetStartedScreenBody({super.key});

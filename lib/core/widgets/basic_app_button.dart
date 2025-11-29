@@ -26,7 +26,14 @@ class BasicAppButton extends StatelessWidget {
           ),
           minimumSize: Size.fromHeight(height ?? 80.sp),
         ),
-        child: Text(title),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
