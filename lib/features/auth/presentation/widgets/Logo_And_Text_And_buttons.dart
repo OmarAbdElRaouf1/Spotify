@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify/common/helpers/is_dark_mode.dart';
-import 'package:spotify/features/auth/presentation/pages/signin_screen.dart';
-import 'package:spotify/features/auth/presentation/pages/signup_screen.dart';
+import 'package:spotify/features/auth/presentation/pages/sign_in.dart';
+import 'package:spotify/features/auth/presentation/pages/sign_up.dart';
 
 class LogoAndTextAndButtons extends StatelessWidget {
   const LogoAndTextAndButtons({super.key});
@@ -42,7 +42,7 @@ class LogoAndTextAndButtons extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) {
                   // Navigator.pushNamed(context, '/signup');
-                  return SignupScreen();
+                  return SignUp();
                 },
               ),
             );
@@ -70,7 +70,7 @@ class LogoAndTextAndButtons extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return SigninScreen();
+                  return SignIn();
                 },
               ),
             );
@@ -80,7 +80,7 @@ class LogoAndTextAndButtons extends StatelessWidget {
             minimumSize: Size(327.w, 56.h),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(28.r),
-              side: const BorderSide(color: Colors.white),
+              side: const BorderSide(color: Colors.white54),
             ),
           ),
           child: Text(

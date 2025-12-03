@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/core/routing/routes.dart';
-import 'package:spotify/features/auth/presentation/pages/signin_screen.dart';
-import 'package:spotify/features/auth/presentation/pages/signup_screen.dart';
+import 'package:spotify/features/auth/presentation/pages/sign_in.dart';
+import 'package:spotify/features/auth/presentation/pages/sign_up.dart';
 import 'package:spotify/features/get_started/presentation/choose_mode_screen.dart';
 import 'package:spotify/features/get_started/presentation/get_started_screen.dart';
 
@@ -14,9 +14,9 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ChooseModeScreen());
 
       case Routes.signUpScreen:
-        return MaterialPageRoute(builder: (_) => const SignupScreen());
+        return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => const SigninScreen());
+        return MaterialPageRoute(builder: (_) => const SignIn());
       default:
         return MaterialPageRoute(builder: (_) => const GetStartedScreen());
     }

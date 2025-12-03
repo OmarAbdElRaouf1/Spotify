@@ -4,8 +4,8 @@ flutter_native_splash:
   android: true
   ios: true
 
-  android_gravity: center # ضبط الصورة في النص
-  ios_content_mode: center # في iOS تخلي الصورة تتوسّط
+  # android_gravity: center # ضبط الصورة في النص
+  # ios_content_mode: center # في iOS تخلي الصورة تتوسّط
 
   # لو شغال على Android 12 لازم تضيف الجزء ده
   android_12:

@@ -21,9 +21,9 @@ class SpotifyApp extends StatelessWidget {
               return MaterialApp(
                 onGenerateRoute: AppRouter.onGenerateRoute,
                 debugShowCheckedModeBanner: false,
-                theme: state == ThemeMode.light
-                    ? AppTheme.lightTheme
-                    : AppTheme.darkTheme,
+                themeMode: state,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
               );
             },
           ),

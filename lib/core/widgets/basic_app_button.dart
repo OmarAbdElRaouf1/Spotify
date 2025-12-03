@@ -16,7 +16,7 @@ class BasicAppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

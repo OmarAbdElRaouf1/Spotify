@@ -11,7 +11,7 @@ class SignupOrSignin extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const AppBarWidget(),
+          AppBarWidget(showLogo: false),
           BgImages(),
           Align(alignment: Alignment.center, child: LogoAndTextAndButtons()),
         ],
