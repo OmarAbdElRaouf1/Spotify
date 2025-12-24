@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotify/features/auth/presentation/pages/signup_or_signin.dart';
 import 'package:spotify/core/widgets/basic_app_button.dart';
 import 'package:spotify/features/get_started/presentation/widgets/choose_mode_buttons.dart';
@@ -35,19 +36,27 @@ class ChooseModeScreenBody extends StatelessWidget {
           SizedBox(height: 23.h),
           ChooseModeButtons(),
           SizedBox(height: 80.h),
-          BasicAppButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    // Replace with the actual next screen
-                    return SignupOrSignin();
-                  },
-                ),
-              );
-            },
-            title: 'Continue',
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: BasicAppButton(
+              onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+
+                // لو انت مخزن الثيم من ChooseModeButtons
+                // مثال: 'dark' أو 'light'
+                // لو مش مخزن لسه، نحط default
+                prefs.setString(
+                  'themeMode',
+                  prefs.getString('themeMode') ?? 'dark',
+                );
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SignupOrSignin()),
+                );
+              },
+              title: 'Continue',
+            ),
           ),
           SizedBox(height: 30.h),
         ],

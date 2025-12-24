@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spotify/core/configs/theme/app_colors.dart';
 
 class BasicAppButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -15,26 +13,12 @@ class BasicAppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.r),
-          ),
-          minimumSize: Size.fromHeight(height ?? 80.sp),
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
-        ),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size.fromHeight(height ?? 80),
       ),
+      child: Text(title),
     );
   }
 }

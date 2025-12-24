@@ -1,13 +1,29 @@
 flutter_native_splash:
-  color: "#F2F2F2" # خلفية السلاش
-  image: assets/images/logo6.png # الصورة
-  android: true
-  ios: true
+  # ========== اللون الأساسي ==========
+  color: "#F2F2F2"
+  color_dark: "#0D0C0C"
 
-  # android_gravity: center # ضبط الصورة في النص
-  # ios_content_mode: center # في iOS تخلي الصورة تتوسّط
+  # ========== الصورة الأساسية (وضع فاتح) ==========
+  image: assets/images/logo_1.png
 
-  # لو شغال على Android 12 لازم تضيف الجزء ده
+  # ========== الصورة الداكنة ==========
+  image_dark: assets/images/logo_1_dark.png
+
+  # ========== منصّات محددة (اختياري بس مفيد) ==========
+  image_android: assets/images/logo_1.png
+  image_dark_android: assets/images/logo_1_dark.png
+
+  image_ios: assets/images/logo_1.png
+  image_dark_ios: assets/images/logo_1_dark.png
+
+  # ========== ملء الشاشة ==========
+  fullscreen: true
+
+  # ========== ANDROID 12 ==========
   android_12:
+    color: "#F2F2F2"
+    # color_dark: "#0D0C0C"
     image: assets/images/logo6.png
+    # image_dark: assets/images/logo_1_dark.png
     icon_background_color: "#F2F2F2"
+    # icon_background_color_dark: "#0D0C0C"

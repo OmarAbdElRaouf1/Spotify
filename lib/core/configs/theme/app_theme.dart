@@ -9,8 +9,6 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.lightMode,
     fontFamily: 'Satoshi',
     inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.transparent,
       contentPadding: EdgeInsets.all(30),
       hintStyle: TextStyle(
         color: Color(0xff383838),
@@ -24,9 +22,15 @@ class AppTheme {
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(color: Colors.black, width: 0.4.w),
       ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide(color: AppColors.primaryColor, width: 0.4.w),
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 60.w, vertical: 15.h),
+        backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.r),
         ),
@@ -40,26 +44,31 @@ class AppTheme {
     brightness: Brightness.dark,
     fontFamily: 'Satoshi',
     inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.transparent,
       contentPadding: EdgeInsets.all(30),
-      hintStyle: TextStyle(
-        color: Color(0xffA7A7A7),
-        fontWeight: FontWeight.w500,
-      ),
+      hintStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(color: Colors.white, width: 0.4.w),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(color: Colors.white, width: 0.4.w),
+        borderSide: BorderSide(
+          color: Color(0xff383838),
+          width: 0.4.w,
+          style: BorderStyle.solid,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+        borderSide: BorderSide(color: AppColors.primaryColor, width: 0.4.w),
       ),
     ),
     // primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.darkMode,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 60.w, vertical: 15.h),
+        backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.r),
         ),

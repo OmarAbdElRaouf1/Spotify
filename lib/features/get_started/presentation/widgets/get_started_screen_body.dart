@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotify/features/get_started/presentation/choose_mode_screen.dart';
 import 'package:spotify/core/widgets/basic_app_button.dart';
 import 'package:spotify/features/get_started/presentation/widgets/logo.dart';
@@ -26,15 +27,23 @@ class GetStartedScreenBody extends StatelessWidget {
           Spacer(),
           TitleSubtitle(),
           SizedBox(height: 20.h),
-          BasicAppButton(
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => ChooseModeScreen()),
-                (route) => false,
-              );
-            },
-            title: 'Get Started',
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: BasicAppButton(
+              onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+
+                // نخزن إن اليوزر خلص OnBoarding
+                await prefs.setBool('isOnBoardingDone', true);
+
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ChooseModeScreen()),
+                  (route) => false,
+                );
+              },
+              title: 'Get Started',
+            ),
           ),
           SizedBox(height: 60),
         ],

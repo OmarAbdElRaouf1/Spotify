@@ -26,36 +26,39 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       elevation: 0,
-      leading: IconButton(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        color: Colors.transparent,
-        disabledColor: Colors.transparent,
-        onPressed: () {
-          if (showBackButton!) {
-            Navigator.pop(context);
-          }
-        },
-        icon: Container(
-          height: 32.h,
-          width: 32.w,
-          decoration: BoxDecoration(
-            color: context.isDarkMode
-                ? Colors.white.withOpacity(0.09)
-                : Colors.black.withOpacity(0.09),
-            shape: BoxShape.circle,
+      leading: Visibility(
+        visible: showBackButton ?? true,
+        child: IconButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          color: Colors.transparent,
+          disabledColor: Colors.transparent,
+          onPressed: () {
+            if (showBackButton!) {
+              Navigator.pop(context);
+            }
+          },
+          icon: Container(
+            height: 32.h,
+            width: 32.w,
+            decoration: BoxDecoration(
+              color: context.isDarkMode
+                  ? Colors.white.withOpacity(0.09)
+                  : Colors.black.withOpacity(0.09),
+              shape: BoxShape.circle,
+            ),
+            child: context.isDarkMode
+                ? SvgPicture.asset(
+                    'assets/vectors/back_button.svg',
+                    height: 16.h,
+                    width: 16.w,
+                  )
+                : SvgPicture.asset(
+                    'assets/vectors/back_light.svg',
+                    height: 16.h,
+                    width: 16.w,
+                  ),
           ),
-          child: context.isDarkMode
-              ? SvgPicture.asset(
-                  'assets/vectors/back_button.svg',
-                  height: 16.h,
-                  width: 16.w,
-                )
-              : SvgPicture.asset(
-                  'assets/vectors/back_light.svg',
-                  height: 16.h,
-                  width: 16.w,
-                ),
         ),
       ),
     );

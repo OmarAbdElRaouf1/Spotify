@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify/core/routing/app_router.dart';
+import 'package:spotify/core/routing/app_gate.dart';
 import 'package:spotify/features/get_started/manger/theme_cubit.dart';
 import 'package:spotify/core/configs/theme/app_theme.dart';
 
@@ -19,11 +19,11 @@ class SpotifyApp extends StatelessWidget {
           child: BlocBuilder<ThemeCubit, ThemeMode>(
             builder: (context, state) {
               return MaterialApp(
-                onGenerateRoute: AppRouter.onGenerateRoute,
+                home: const AppStart(),
                 debugShowCheckedModeBanner: false,
-                themeMode: state,
-                theme: AppTheme.lightTheme,
-                darkTheme: AppTheme.darkTheme,
+                theme: state == ThemeMode.light
+                    ? AppTheme.lightTheme
+                    : AppTheme.darkTheme,
               );
             },
           ),
