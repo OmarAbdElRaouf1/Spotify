@@ -4,12 +4,13 @@ class SongsEntity {
   final num duration;
   final DateTime createdAt;
   final String imageUrl; // يمكن إضافة خصائص أخرى حسب الحاجة
-
+  final String songUrl;
   SongsEntity({
     required this.title,
     required this.artist,
     required this.duration,
     required this.createdAt,
     required this.imageUrl,
+    required this.songUrl,
   });
 }

@@ -20,7 +20,7 @@ class SongsListView extends StatelessWidget {
 
         return SizedBox(
           width: 220.w,
-          child: NewestSongsItem(song: song),
+          child: NewestSongsItem(song: song, playlist: songs, index: index),
         );
       },
     );

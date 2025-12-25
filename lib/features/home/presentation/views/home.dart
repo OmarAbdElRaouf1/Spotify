@@ -6,6 +6,26 @@ import 'package:spotify/features/home/presentation/views/widgets/home_tabs.dart'
 import 'package:spotify/features/home/presentation/views/widgets/newest_songs.dart';
 import 'package:spotify/features/home/presentation/views/widgets/play_list.dart';
 
+class KeepAliveWrapper extends StatefulWidget {
+  const KeepAliveWrapper({super.key, required this.child});
+  final Widget child;
+
+  @override
+  State<KeepAliveWrapper> createState() => _KeepAliveWrapperState();
+}
+
+class _KeepAliveWrapperState extends State<KeepAliveWrapper>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return widget.child;
+  }
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -44,11 +64,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: TabBarView(
                 controller: tabController,
                 children: [
-                  NewestSongs(),
-
-                  Center(child: Text('Popular Songs')),
-                  Center(child: Text('Recommended Songs')),
-                  Center(child: Text('Top Charts')),
+                  KeepAliveWrapper(child: NewestSongsBlocBuilder()),
+                  KeepAliveWrapper(child: Center(child: Text('Popular Songs'))),
+                  KeepAliveWrapper(
+                    child: Center(child: Text('Recommended Songs')),
+                  ),
+                  KeepAliveWrapper(child: Center(child: Text('Top Charts'))),
                 ],
               ),
             ),

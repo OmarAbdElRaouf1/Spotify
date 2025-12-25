@@ -7,6 +7,7 @@ class SongsModel extends SongsEntity {
     required super.duration,
     required super.createdAt,
     required super.imageUrl,
+    required super.songUrl,
   });
 
   factory SongsModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +28,7 @@ class SongsModel extends SongsEntity {
           json['coverUrl'] ??
           json['cover_url'] ??
           'https://via.placeholder.com/160',
+      songUrl: json['songUrl'] ?? json['song_url'] ?? '',
     );
   }
 
@@ -37,6 +39,7 @@ class SongsModel extends SongsEntity {
       'duration': duration,
       'createdAt': createdAt.toIso8601String(),
       'imageUrl': imageUrl,
+      'songUrl': songUrl,
     };
   }
 }

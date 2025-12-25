@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: any
   cloud_firestore: ^6.1.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -41,13 +42,12 @@ dependencies:
   flutter_svg: ^2.2.2
   get_it: ^9.2.0
   hydrated_bloc: ^10.1.1
+  just_audio: ^0.10.5
   modal_progress_hud_nsn: ^0.5.1
   path_provider: ^2.1.5
   shared_preferences: ^2.5.4
   shimmer_animation: ^2.2.2+1
   supabase_flutter: ^2.12.0
-
-  bloc: any
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:

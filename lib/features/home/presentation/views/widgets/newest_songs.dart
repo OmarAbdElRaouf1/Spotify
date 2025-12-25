@@ -8,17 +8,30 @@ import 'package:spotify/features/home/presentation/manger/newest_songs_cubit/new
 import 'package:spotify/features/home/presentation/views/widgets/newest_sings_shimmer_loading.dart';
 import 'package:spotify/features/home/presentation/views/widgets/newest_songs_list_view.dart';
 
-class NewestSongs extends StatelessWidget {
-  const NewestSongs({super.key});
+class NewestSongsBlocBuilder extends StatefulWidget {
+  const NewestSongsBlocBuilder({super.key});
+
+  @override
+  State<NewestSongsBlocBuilder> createState() => _NewestSongsBlocBuilderState();
+}
+
+class _NewestSongsBlocBuilderState extends State<NewestSongsBlocBuilder>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (_) => NewestSongsCubit()..fetchNewestSongs(),
       child: SizedBox(
         height: 100.h,
         child: BlocBuilder<NewestSongsCubit, NewestSongsState>(
           builder: (context, state) {
+            if (state is NewestSongsInitial) {
+              return const SizedBox();
+            }
             if (state is NewestSongsLoading) {
               return NewestSongsShimmerLoading();
             }
@@ -33,7 +46,7 @@ class NewestSongs extends StatelessWidget {
                     Icon(Icons.error_outline, size: 50, color: Colors.red[300]),
                     SizedBox(height: 8.h),
                     Text(
-                      'حدث خطأ في تحميل الأغاني',
+                      'Something went wrong',
                       style: TextStyle(
                         color: Colors.grey[600],
                         fontSize: 14.sp,

@@ -6,7 +6,7 @@ import 'package:spotify/features/home/presentation/manger/newest_songs_cubit/new
 import '../../../../../core/services/get_it.dart';
 
 class NewestSongsCubit extends Cubit<NewestSongsState> {
-  NewestSongsCubit() : super(NewestSongsLoading());
+  NewestSongsCubit() : super(NewestSongsInitial());
 
   Future<void> fetchNewestSongs() async {
     emit(NewestSongsLoading());
