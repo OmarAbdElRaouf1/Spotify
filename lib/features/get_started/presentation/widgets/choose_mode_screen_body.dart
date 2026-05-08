@@ -50,6 +50,7 @@ class ChooseModeScreenBody extends StatelessWidget {
                   prefs.getString('themeMode') ?? 'dark',
                 );
 
+                if (!context.mounted) return;
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (_) => const SignupOrSignin()),

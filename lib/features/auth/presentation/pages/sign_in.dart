@@ -89,6 +89,7 @@ class SignIn extends StatelessWidget {
       ),
     );
 
+    if (!context.mounted) return;
     result.fold(
       (l) {
         final snackbar = SnackBar(
@@ -101,9 +102,10 @@ class SignIn extends StatelessWidget {
       (r) async {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setBool('isLoggedIn', true);
+        if (!context.mounted) return;
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (_) => HomePage()),
+          MaterialPageRoute(builder: (_) => const HomePage()),
           (_) => false,
         );
       },

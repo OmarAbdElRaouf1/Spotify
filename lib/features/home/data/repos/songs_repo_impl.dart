@@ -13,4 +13,16 @@ class SongsRepoImpl extends SongsRepo {
   Future<Either<dynamic, dynamic>> getPlayList() async {
     return await getIt<SongService>().getPlayList();
   }
+
+  @override
+  Future<Either<dynamic, dynamic>> addOrRemoveFromFavorites(
+    String songId,
+  ) async {
+    return await getIt<SongService>().addOrRemoveFromFavorites(songId);
+  }
+
+  @override
+  Future<bool> isFavoriteSong(String songId) async {
+    return await getIt<SongService>().isFavoriteSong(songId);
+  }
 }

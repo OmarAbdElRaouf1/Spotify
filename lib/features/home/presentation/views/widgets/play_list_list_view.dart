@@ -22,7 +22,7 @@ class PlayListListView extends StatelessWidget {
               children: [
                 Text(songs[index].duration.toString().replaceAll('.', ':')),
                 const SizedBox(width: 20),
-                FavoriteButton(),
+                FavoriteButton(songId: songs[index].id),
               ],
             ),
           ],

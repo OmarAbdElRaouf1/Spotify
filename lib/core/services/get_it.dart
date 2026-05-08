@@ -3,8 +3,10 @@ import 'package:spotify/core/services/auth/supabase_auth.dart';
 import 'package:spotify/core/services/songs/songs_supabase_storage.dart';
 import 'package:spotify/core/usecases/auth/sign_in.dart';
 import 'package:spotify/core/usecases/auth/sign_up.dart';
+import 'package:spotify/core/usecases/song/add_or_remove_favorite_songs.dart';
 import 'package:spotify/core/usecases/song/get_newest_songs.dart';
 import 'package:spotify/core/usecases/song/get_play_list.dart';
+import 'package:spotify/core/usecases/song/is_favorite_song.dart';
 import 'package:spotify/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:spotify/features/auth/domain/repos/auth_repo.dart';
 import 'package:spotify/features/home/data/repos/songs_repo_impl.dart';
@@ -26,6 +28,11 @@ Future<void> setupLocator() async {
   // 3. حالات الاستخدام (Use Cases) - تعتمد على المستودعات
   getIt.registerFactory(() => SignUpUseCase(getIt<AuthRepo>()));
   getIt.registerFactory(() => SignInUseCase(getIt<AuthRepo>()));
-  getIt.registerFactory(() => GetNewestSongs(getIt<SongsRepo>()));
-  getIt.registerFactory(() => GetPlayList(getIt<SongsRepo>()));
+  getIt.registerFactory(() => GetNewestSongsUseCase(getIt<SongsRepo>()));
+  getIt.registerFactory(() => GetPlayListUseCase(getIt<SongsRepo>()));
+
+  getIt.registerSingleton<AddOrRemoveFavoriteSongsUseCase>(
+    AddOrRemoveFavoriteSongsUseCase(),
+  );
+  getIt.registerSingleton<IsFavoriteSongUseCase>(IsFavoriteSongUseCase());
 }

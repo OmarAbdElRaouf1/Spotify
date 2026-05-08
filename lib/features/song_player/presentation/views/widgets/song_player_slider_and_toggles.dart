@@ -11,26 +11,25 @@ class SongPlayerSliderAndToggles extends StatelessWidget {
   const SongPlayerSliderAndToggles({super.key});
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<SongPlayerCubit>();
+    final maxValue = cubit.songDuration.inMilliseconds > 0
+        ? cubit.songDuration.inMilliseconds.toDouble()
+        : 1.0;
+    final currentValue = cubit.songPosition.inMilliseconds
+        .toDouble()
+        .clamp(0.0, maxValue)
+        .toDouble();
+
     return Column(
       children: [
         Slider(
           thumbColor: AppColors.primaryColor,
           activeColor: AppColors.primaryColor,
-          value: context
-              .read<SongPlayerCubit>()
-              .songPosition
-              .inSeconds
-              .toDouble(),
-          max: context
-              .read<SongPlayerCubit>()
-              .songDuration
-              .inSeconds
-              .toDouble(),
+          value: currentValue,
+          max: maxValue,
           min: 0.0,
           onChanged: (value) {
-            context.read<SongPlayerCubit>().seek(
-              Duration(seconds: value.toInt()),
-            );
+            cubit.seek(Duration(milliseconds: value.toInt()));
           },
         ),
         SizedBox(height: 10.h),
@@ -38,13 +37,9 @@ class SongPlayerSliderAndToggles extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(
             children: [
-              Text(
-                formatDuration(context.read<SongPlayerCubit>().songPosition),
-              ),
+              Text(formatDuration(cubit.songPosition)),
               Spacer(),
-              Text(
-                formatDuration(context.read<SongPlayerCubit>().songDuration),
-              ),
+              Text(formatDuration(cubit.songDuration)),
             ],
           ),
         ),
@@ -74,7 +69,7 @@ class SongPlayerSliderAndToggles extends StatelessWidget {
                   color: AppColors.primaryColor,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryColor.withOpacity(0.4),
+                      color: AppColors.primaryColor.withValues(alpha: 0.4),
                       blurRadius: 20.r,
                       spreadRadius: 5.r,
                     ),
@@ -83,13 +78,13 @@ class SongPlayerSliderAndToggles extends StatelessWidget {
                 child: IconButton(
                   icon: Icon(
                     size: 40.sp,
-                    context.read<SongPlayerCubit>().audioPlayer.playing
+                    cubit.audioPlayer.playing
                         ? Icons.pause_rounded
                         : Icons.play_arrow_rounded,
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    context.read<SongPlayerCubit>().playOrPauseSong();
+                    cubit.playOrPauseSong();
                   },
                 ),
               ),

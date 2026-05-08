@@ -1,4 +1,5 @@
 class SongsEntity {
+  final String id;
   final String title;
   final String artist;
   final num duration;
@@ -6,6 +7,7 @@ class SongsEntity {
   final String imageUrl; // يمكن إضافة خصائص أخرى حسب الحاجة
   final String songUrl;
   SongsEntity({
+    required this.id,
     required this.title,
     required this.artist,
     required this.duration,

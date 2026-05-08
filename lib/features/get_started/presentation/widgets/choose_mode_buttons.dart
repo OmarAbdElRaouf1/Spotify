@@ -29,7 +29,7 @@ class ChooseModeButtons extends StatelessWidget {
                     width: 80.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xff30393c).withOpacity(0.5),
+                      color: const Color(0xff30393c).withValues(alpha: 0.5),
                     ),
                     child: Center(
                       child: SvgPicture.asset(
@@ -68,7 +68,7 @@ class ChooseModeButtons extends StatelessWidget {
                     width: 80.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xff30393c).withOpacity(0.5),
+                      color: const Color(0xff30393c).withValues(alpha: 0.5),
                     ),
                     child: Center(
                       child: SvgPicture.asset(

@@ -21,8 +21,8 @@ class PlayListItemShimmerLoading extends StatelessWidget {
           duration: const Duration(seconds: 2),
           interval: const Duration(seconds: 1),
           color: context.isDarkMode
-              ? Colors.white.withOpacity(0.1)
-              : Colors.black.withOpacity(0.1),
+              ? Colors.white.withValues(alpha: 0.1)
+              : Colors.black.withValues(alpha: 0.1),
           colorOpacity: 0.3,
           enabled: true,
           direction: const ShimmerDirection.fromLTRB(),

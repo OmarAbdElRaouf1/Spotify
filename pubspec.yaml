@@ -33,11 +33,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   firebase_auth: ^6.1.2
+  file_picker: ^10.3.7
   firebase_core: ^4.2.1
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
-  flutter_native_splash: ^2.4.7
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.2
   get_it: ^9.2.0
@@ -48,6 +48,7 @@ dependencies:
   shared_preferences: ^2.5.4
   shimmer_animation: ^2.2.2+1
   supabase_flutter: ^2.12.0
+  just_audio_background: ^0.0.1-beta.17
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:

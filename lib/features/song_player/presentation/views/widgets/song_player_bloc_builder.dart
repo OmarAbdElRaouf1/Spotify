@@ -13,10 +13,23 @@ class SongPlayerBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state is SongPlayerLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is SongPlayerLoaded) {
-          return SongPlayerSliderAndToggles();
+        } else if (state is SongPlayerError) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  state.message,
+                  style: const TextStyle(color: Colors.red),
+                ),
+              ),
+              const SizedBox(height: 12),
+              SongPlayerSliderAndToggles(),
+            ],
+          );
         } else {
-          return const SizedBox.shrink();
+          return SongPlayerSliderAndToggles();
         }
       },
     );

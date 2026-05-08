@@ -2,6 +2,7 @@ import 'package:spotify/features/home/domain/entities/songs_entity.dart';
 
 class SongsModel extends SongsEntity {
   SongsModel({
+    required super.id,
     required super.title,
     required super.artist,
     required super.duration,
@@ -12,6 +13,7 @@ class SongsModel extends SongsEntity {
 
   factory SongsModel.fromJson(Map<String, dynamic> json) {
     return SongsModel(
+      id: (json['id'] ?? json['song_id'] ?? json['audio_url'] ?? '').toString(),
       title: json['title'] ?? '',
       artist: json['artist'] ?? '',
       duration: json['duration'] ?? 0,
@@ -28,12 +30,13 @@ class SongsModel extends SongsEntity {
           json['coverUrl'] ??
           json['cover_url'] ??
           'https://via.placeholder.com/160',
-      songUrl: json['songUrl'] ?? json['song_url'] ?? '',
+      songUrl: json['audio_url'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'title': title,
       'artist': artist,
       'duration': duration,

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/routing/app_gate.dart';
 import 'package:spotify/features/get_started/manger/theme_cubit.dart';
 import 'package:spotify/core/configs/theme/app_theme.dart';
+import 'package:spotify/features/song_player/presentation/manger/cubit/song_player_cubit.dart';
 
 class SpotifyApp extends StatelessWidget {
   const SpotifyApp({super.key});
@@ -15,7 +16,10 @@ class SpotifyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
-          providers: [BlocProvider(create: (context) => ThemeCubit())],
+          providers: [
+            BlocProvider(create: (context) => ThemeCubit()),
+            BlocProvider(create: (context) => SongPlayerCubit()),
+          ],
           child: BlocBuilder<ThemeCubit, ThemeMode>(
             builder: (context, state) {
               return MaterialApp(

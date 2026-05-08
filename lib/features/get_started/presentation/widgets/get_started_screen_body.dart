@@ -36,6 +36,7 @@ class GetStartedScreenBody extends StatelessWidget {
                 // نخزن إن اليوزر خلص OnBoarding
                 await prefs.setBool('isOnBoardingDone', true);
 
+                if (!context.mounted) return;
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (_) => const ChooseModeScreen()),

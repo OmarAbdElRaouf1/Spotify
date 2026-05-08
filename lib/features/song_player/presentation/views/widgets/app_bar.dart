@@ -15,7 +15,10 @@ class SongPlayerAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         icon: SvgPicture.asset(
           'assets/vectors/back_button.svg',
-          color: context.isDarkMode ? Colors.white : Colors.black,
+          colorFilter: ColorFilter.mode(
+            context.isDarkMode ? Colors.white : Colors.black,
+            BlendMode.srcIn,
+          ),
         ),
       ),
       actions: [

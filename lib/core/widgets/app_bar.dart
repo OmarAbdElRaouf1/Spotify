@@ -8,9 +8,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.showBackButton = true,
     this.showLogo = true,
+    this.actions,
   });
   final bool? showBackButton;
   final bool? showLogo;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +45,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             width: 32.w,
             decoration: BoxDecoration(
               color: context.isDarkMode
-                  ? Colors.white.withOpacity(0.09)
-                  : Colors.black.withOpacity(0.09),
+                  ? Colors.white.withValues(alpha: 0.09)
+                  : Colors.black.withValues(alpha: 0.09),
               shape: BoxShape.circle,
             ),
             child: context.isDarkMode
@@ -61,6 +63,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ),
+      actions: actions,
     );
   }
 

@@ -20,7 +20,10 @@ class SongsListView extends StatelessWidget {
 
         return SizedBox(
           width: 220.w,
-          child: NewestSongsItem(song: song, playlist: songs, index: index),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: NewestSongsItem(song: song, playlist: songs, index: index),
+          ),
         );
       },
     );

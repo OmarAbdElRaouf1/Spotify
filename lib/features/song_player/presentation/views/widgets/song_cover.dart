@@ -54,7 +54,7 @@ class SongCoverAndDetails extends StatelessWidget {
                   ],
                 ),
               ),
-              FavoriteButton(),
+              FavoriteButton(songId: song.id),
             ],
           ),
         ),

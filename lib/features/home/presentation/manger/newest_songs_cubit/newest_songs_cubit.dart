@@ -11,7 +11,7 @@ class NewestSongsCubit extends Cubit<NewestSongsState> {
   Future<void> fetchNewestSongs() async {
     emit(NewestSongsLoading());
     try {
-      var returnedSongs = await getIt<GetNewestSongs>().call(null);
+      var returnedSongs = await getIt<GetNewestSongsUseCase>().call(null);
 
       returnedSongs.fold(
         (l) => emit(NewestSongsError(l.toString())),
