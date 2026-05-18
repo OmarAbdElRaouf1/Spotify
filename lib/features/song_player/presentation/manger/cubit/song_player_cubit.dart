@@ -20,6 +20,7 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   StreamSubscription<Duration?>? _durationSubscription;
   StreamSubscription<Duration>? _positionSubscription;
   StreamSubscription<PlayerState>? _playerStateSubscription;
+  bool _isChangingSong = false;
 
   SongPlayerCubit() : super(SongPlayerLoading()) {
     _durationSubscription = audioPlayer.durationStream.listen((duration) {
@@ -36,7 +37,7 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
       playerState,
     ) {
       if (playerState.processingState == ProcessingState.completed) {
-        playNextSong();
+        _handleSongCompleted();
         return;
       }
 
@@ -51,6 +52,17 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   void updateSongPlayer() {
     if (!isClosed) {
       emit(SongPlayerLoaded());
+    }
+  }
+
+  Future<void> _handleSongCompleted() async {
+    if (_isChangingSong || playlist.isEmpty) return;
+
+    _isChangingSong = true;
+    try {
+      await playNextSong();
+    } finally {
+      _isChangingSong = false;
     }
   }
 
@@ -71,7 +83,8 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
 
       if (song != null &&
           previousSongId == song.id &&
-          audioPlayer.processingState != ProcessingState.idle) {
+          audioPlayer.processingState != ProcessingState.idle &&
+          audioPlayer.processingState != ProcessingState.completed) {
         if (!isClosed) emit(SongPlayerLoaded());
         return;
       }
